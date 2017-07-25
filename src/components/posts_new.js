@@ -32,6 +32,7 @@ class PostsNew extends Component {
           name='content'
           component={this.renderField}
         />
+        {field.meta.error}
       </form>
     );
   }
