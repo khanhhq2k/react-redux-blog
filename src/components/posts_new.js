@@ -1,6 +1,7 @@
 import React, { Component} from 'react';
 import {Field, reduxForm} from 'redux-form';
 // reduxForm is a function similar to connect redux, a connect helper
+// reduxForm is for validation and form state only, not taking data, submit etc
 class PostsNew extends Component {
   renderField (field){
     return(
@@ -16,12 +17,17 @@ class PostsNew extends Component {
     );
   }
   onSubmit(values){
-    // this === component
     console.log(values);
   }
   render(){
+    // pull handleSubmit(passed to component on behalf of reduxForm) from props
+    // because we have connect PostsNew form to reduxForm at the end of this file
     const { handleSubmit } = this.props;
     return (
+      //handleSubmit comes first, if everything ok(valid), this.Onsubmit(our callback function) will process
+      // We have to bind this to onSubmit because this.onSubmit is a callback function,
+      //->when it runs the context would have already changed
+      //=> to make sure we still have access to Postsnew.onSubmit
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <Field
           label='Title'
