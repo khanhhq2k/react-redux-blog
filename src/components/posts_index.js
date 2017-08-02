@@ -7,6 +7,9 @@ import {fetchPosts} from '../actions/index';
 
 class PostsIndex extends Component {
   componentDidMount(){
+    //dataflow: 2. we call action creator to fetch list of posts,
+    // data will go through action creator -> posts index reducer -> state -> component props via mapStateToProps
+    // so we will be able to call this.props.posts
     this.props.fetchPosts();
   }
   renderPosts(){
@@ -40,4 +43,5 @@ function mapStateToProps(state){
   return {posts: state.posts}
 }
 //another way to pass action creator instead of dispatch
+//dataflow: 1. we hook component and the action creator fetchPosts(not call it yet)
 export default connect(mapStateToProps, {fetchPosts: fetchPosts})(PostsIndex);
