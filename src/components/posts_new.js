@@ -3,6 +3,8 @@ import {Field, reduxForm} from 'redux-form';
 import {Link} from 'react-router-dom';
 // reduxForm is a function similar to connect redux, a connect helper
 // reduxForm is for validation and form state only, not taking data, submit etc
+import {connect} from 'react-redux';
+import {createPost} from '../actions/index';
 class PostsNew extends Component {
   renderField (field){
     // grab meta from field(destructure)
@@ -23,7 +25,10 @@ class PostsNew extends Component {
     );
   }
   onSubmit(values){
-    console.log(values);
+    this.props.createPost(values, () => {
+      //props.history is passed into component by Route in src/index
+      this.props.history.push('/'); //navigate to index page
+    });
   }
   render(){
     // pull handleSubmit(passed to component on behalf of reduxForm) from props
@@ -78,4 +83,7 @@ export default reduxForm({
   form: 'PostsNewForm',
   //validation
   validate: validate
-})(PostsNew);
+})(
+  //bind action creator form actions/index
+  connect(null, {createPost})(PostsNew)
+);
