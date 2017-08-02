@@ -1,4 +1,4 @@
-import { FETCH_POSTS, FETCH_POST } from '../actions/index';
+import { FETCH_POSTS, FETCH_POST, DELETE_POST } from '../actions/index';
 import _ from 'lodash';
 export default function(state = {}, action) {
   switch (action.type) {
@@ -14,6 +14,10 @@ export default function(state = {}, action) {
       // "key interpolation"
       return { ...state, [action.payload.data.id]: action.payload.data }
       return newState;
+    case DELETE_POST:
+      //action.payload == `id` as we defined in action creator
+      //remove key value pair from app state object
+      return _.omit(state, action.payload);
     default:
       return state;
   }
