@@ -10,7 +10,7 @@
   "repository": "git@github.com:StephenGrider/ReduxSimpleStarter.git",
   "scripts": {
     "dev": "SET NODE_ENV=development & node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
-    "start": "SET NODE_ENV=production & node server.js",
+    "start": "node server.js",
     "postinstall": "webpack -p",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
     "test:watch": "npm run test -- --watch"
