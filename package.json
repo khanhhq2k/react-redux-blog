@@ -29,7 +29,6 @@
     "mocha": "^2.4.5",
     "react-addons-test-utils": "^0.14.7",
     "express": "^4.13.3",
-    "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.0"
   },
   "dependencies": {
@@ -42,6 +41,7 @@
     "react-router-dom": "^4.0.0",
     "redux": "^3.0.4",
     "redux-form": "^6.6.3",
-    "redux-promise": "^0.5.3"
+    "redux-promise": "^0.5.3",
+    "webpack": "^1.12.9"
   }
 }
